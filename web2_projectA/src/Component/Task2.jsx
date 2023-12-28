@@ -11,11 +11,20 @@ import 'slick-carousel/slick/slick-theme.css';
 
 
 
-
-
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const Task2 = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration
+      easing: 'ease-in-out', // Easing function
+      once: false, // Only animate once
+    });
+  }, []);
+
 
   const settings = {
     dots: false,
@@ -72,6 +81,7 @@ const Task2 = () => {
 
 
       <div className="box box-1">
+       
           <div className="box-text-1">
             <p>Enjoy</p>
             <h2>With</h2>
@@ -105,16 +115,7 @@ const Task2 = () => {
             <button className="type1">Browse</button>
           </div>
         </div>
-        {/* <div className="box box-5">
-          <div className="box-text-2">
-            <p>Play</p>
-            <div>
-              <h2>Game</h2>
-            </div>
-            <h1 className="oculus">OCULUS</h1>
-            <button className="type2">Browse</button>
-          </div>
-        </div> */}
+       
         <div className="box box-6">
           <div className="box-text-3">
             <p>New</p>
@@ -134,27 +135,32 @@ const Task2 = () => {
 
 
       <div className="icon-container ">
-        <div className="icon border-2 w-full shadow-md py-4 rounded-[10px]">
-          <img src="images/Icons/icons8-delivery-truck-96.png" alt="icon1" />
+        <div data-aos="fade-up"  className="icon border-2 w-full
+         shadow-sm py-4 rounded-[10px]">
+          <img src="https://res.cloudinary.com/durbee4ln/image/upload/v1703391057/FOOD_APP/HEADPHONE/Icons/icons8-delivery-truck-96_x0ntam.png" alt="icon1" />
           <h5>Free Shipping</h5>
           <p>Free shipping On All Order</p>
         </div>
-        <div className="icon w-full  border-2 shadow-md py-4 rounded-[10px]">
-          <img src="images/Icons/icons8-badge-80.png" alt="Icon2" />
+        <div data-aos="fade-up"  className="icon w-full  border-2 
+        shadow-sm py-4 rounded-[10px]">
+          <img src="https://res.cloudinary.com/durbee4ln/image/upload/v1703391057/FOOD_APP/HEADPHONE/Icons/icons8-badge-80_wzeut1.png" alt="Icon2" />
           <h5>Money Guarantee</h5>
           <p>30 Day Money Back</p>
         </div>
-        <div className="icon w-full  border-2 shadow-md py-4 rounded-[10px]">
-          <img src="images/Icons/icons8-support-80.png" alt="Icon3" />
+        <div  data-aos="fade-up"  className="icon w-full  
+        border-2 shadow-sm py-4 rounded-[10px]">
+          <img src="https://res.cloudinary.com/durbee4ln/image/upload/v1703391059/FOOD_APP/HEADPHONE/Icons/icons8-support-80_f2iqvv.png" alt="Icon3" />
           <h5>Online Support 24/7</h5>
           <p>Technical Support 24/7</p>
         </div>
-        <div className="icon  w-full border-2 shadow-md py-4 rounded-[10px]">
-          <img src="images/Icons/icons8-payment-100.png" alt="Icon4" />
+        <div data-aos="fade-up"  className="icon  w-full border-2 
+        shadow-sm py-4 rounded-[10px]">
+          <img src="https://res.cloudinary.com/durbee4ln/image/upload/v1703391057/FOOD_APP/HEADPHONE/Icons/icons8-payment-100_wtl0k0.png" alt="Icon4" />
           <h5>Secure Payment</h5>
           <p>All Cards Accepted</p>
         </div>
       </div>
+
 
      
     </div>

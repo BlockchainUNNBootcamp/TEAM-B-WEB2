@@ -1,12 +1,26 @@
 import React from 'react';
+import { useEffect,useState } from 'react';
 import FeatureData from './Feature';
 import { FaStar, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { FaShoppingBag } from "react-icons/fa";
-import { useEffect } from 'react';
+import { RiCloseCircleFill } from 'react-icons/ri';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Task3 = () => {
+const Task3 = ({ product, addToCart }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const openModal = (imgUrl) => {
+    console.log('Clicked on image. Image URL:', imgUrl);
+    setSelectedImage(imgUrl);
+  };
+  
+
+
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+  // console.log(product);
   useEffect(() => {
     AOS.init({
       duration: 800, // Animation duration
@@ -16,9 +30,10 @@ const Task3 = () => {
   }, []);
   return (
     <div>
+      
       <main className=' lg:px-[4rem]'>
       <header className="text-center py-8 px-[1rem]">
-      <h1 className="text-4xl font-bold relative inline-block">
+      <h1 className="text-2xl font-bold relative inline-block">
         <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
           Features Products
         </span>
@@ -30,7 +45,7 @@ const Task3 = () => {
     return (
       <div data-aos="fade-up" 
         className="fxtCon lg:w-[18%] w-[40%] my-4 pb-4 
-        border border-gray-300  rounded-[10px] mx-2
+         border-gray-300 shadow-2xl  rounded-[10px] mx-2
          overflow-hidden transition-transform transform hover:scale-105 relative"
         key={idx}
       >
@@ -51,7 +66,7 @@ const Task3 = () => {
           )}
         </span>
         <div className='w-full h-[120px] lg:p-0 flex justify-center items-center'>
-          <img src={fxt.imgUrl} alt={fxt.name} className='max-h-full max-w-full object-cover' />
+          <img src={fxt.imgUrl} alt={fxt.name}                 onClick={() => openModal(fxt.imgUrl)} className='max-h-full max-w-full object-cover' />
         </div>
         <div className='px-[1rem]'>
           <div className='flex justify-between items-center mt-2'>
@@ -63,7 +78,7 @@ const Task3 = () => {
               </div>
               <p className='text-sm font-bold'>${fxt.price}</p>
             </div>
-            <FaShoppingBag className='text-red-500 text-[1.2rem]' />
+            <FaShoppingBag   onClick={() => addToCart(fxt)} className='text-red-500 cursor-pointer text-[1.2rem]' />
           </div>
           <p className='mt-0 text-sm'>{fxt.name}</p>
         </div>
@@ -73,6 +88,19 @@ const Task3 = () => {
 </section>
 
       </main>
+
+      
+      {selectedImage && (
+        <div className="fixed z-50 top-0 left-0 w-full h-full flex items-center justify-center
+         bg-black bg-opacity-75 transition-opacity duration-800">
+          <div className="max-w-screen-lg w-full lg:w-[40%] md:w-[40%] mx-4 p-4 bg-white rounded-md relative">
+            <img src={selectedImage} data-aos="fade-up" alt="Enlarged" className="w-full h-auto lg:w-[400px]" />
+            <button className="absolute top-0 right-0 p-2 text-white" onClick={closeModal}>
+              <RiCloseCircleFill className="text-[2rem] text-red-500" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
