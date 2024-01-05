@@ -1,4 +1,4 @@
-# TEAM4-WEB-023
+# TEAM2-WEB-023
 The repository for BUNN TEAM-4 2023 WEB DEVELOPMENT COHORT
 # Headphone E-Commerce Web App
 
